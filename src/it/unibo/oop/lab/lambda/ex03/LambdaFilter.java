@@ -35,7 +35,10 @@ public final class LambdaFilter extends JFrame {
     private static final long serialVersionUID = 1760990730218643730L;
 
     private enum Command {
-        IDENTITY("No modifications", Function.identity());
+        IDENTITY("No modifications", Function.identity()),
+        TO_LOWER("Lowercase", x -> x.toLowerCase()),
+        COUNT("Count characters", x -> Integer.toString(x.length())),
+        COUNT_LINES("Number of lines", x -> Long.toString(x.chars().filter(y -> y == '\n').count() + 1));
 
         private final String commandName;
         private final Function<String, String> fun;
